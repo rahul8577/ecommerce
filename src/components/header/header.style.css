@@ -9,8 +9,7 @@
 .header .logo-container .logo{
     height: 100%;
     width: 70px;
-    /* padding: 25px; */
-    color: black;
+    color: rgb(91, 80, 80);
 }
 
 .header .options{
@@ -23,4 +22,6 @@
 
 .header .options .option{
     padding: 10px 15px;
+    text-decoration: none;
+    color: black;
 }
