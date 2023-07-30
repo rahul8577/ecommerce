@@ -5,12 +5,12 @@
     letter-spacing: 0.5px;
     line-height: 50px;
     padding: 0 35px 0 35px;
-    font-size: 15px;
+    font-size: 12px;
     background-color: black;
     color: wheat;
     text-transform: uppercase;
     /* font-family: "open sans"; */
-    font-weight: bolder;
+    font-weight:bold;
     border: none;
     cursor: pointer;
 }
@@ -19,4 +19,8 @@
     background-color: white;
     color: black;
     border: 1px solid black;
+}
+
+.google-sign-in{
+    background-color: rgb(62, 137, 175);
 }
