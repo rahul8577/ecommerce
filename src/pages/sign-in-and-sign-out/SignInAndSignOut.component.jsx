@@ -1,6 +1,7 @@
 import React from "react";
 import './sign-in-and-sign-out.style.css'
 import SignIn from "../../components/sign-in/SignIn.component";
+import SignUp from '../../components/sign-up/SignUp.component';
 
 class SignInAndSignOut extends React.Component{
     constructor(props){
@@ -14,8 +15,9 @@ class SignInAndSignOut extends React.Component{
 
     render(){
         return(
-            <div className="signin">
+            <div className="sign-in-sign-up">
                 <SignIn/>
+                <SignUp/>
             </div>
         );
     }

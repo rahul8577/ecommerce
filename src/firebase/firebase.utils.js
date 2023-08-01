@@ -1,7 +1,9 @@
-import {initializeApp} from "firebase/app"
-import { GoogleAuthProvider,getAuth,signInWithPopup } from "firebase/auth";
+import { initializeApp } from "firebase/app"
+import firebase from "firebase/app"
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { getFirestore, collection, doc, QuerySnapshot, getDoc, setDoc } from "firebase/firestore"
 
-export const app=initializeApp(
+export const app = initializeApp(
     {
         apiKey: "AIzaSyCEfiXULkVb0_6N6RBi_RNcrhw1uUakbwU",
         authDomain: "ecom-db-a1c1a.firebaseapp.com",
@@ -13,10 +15,37 @@ export const app=initializeApp(
     }
 );
 
+export const db = getFirestore(app);
+
+export const createUserProfile = async (userAuth, additionalData) => {
+    if (!userAuth) return;
+
+    const userref = doc(db, `users/${userAuth.uid}`);
+    const snapshot = await getDoc(userref);
+
+    if (!snapshot.exists()) {
+        console.log(userAuth)
+        const { displayName, email } = userAuth;
+        const createAt = new Date();
+
+        try {
+            await setDoc(userref, {
+                displayName,
+                email,
+                createAt,
+                ...additionalData
+            })
+        } catch (error) {
+            console.log(error.message)
+        }
+
+    }
+    return userref;
+
+}
+
 const provider = new GoogleAuthProvider();
 export const auth = getAuth(app);
 
-const authPopup = getAuth();
-export const signInWithGoogle = () => signInWithPopup(authPopup,provider);
+export const signInWithGoogle = () => signInWithPopup(auth, provider);
 
-// export app;
