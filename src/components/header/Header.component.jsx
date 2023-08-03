@@ -2,10 +2,13 @@ import React from 'react'
 import { AiOutlineCrown as Logo } from 'react-icons/ai'
 import './header.style.css'
 import { auth } from '../../firebase/firebase.utils';
+import store from '../../redux/store';
+// import { Subscription } from 'react-redux';
 
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default function Header({currentuser}) {
+function Header({ currentuser }) {
     return (
         <div className='header'>
             <Link to="/" className="logo-container">
@@ -16,11 +19,18 @@ export default function Header({currentuser}) {
                 <Link to="/contact" className="option">CONTACT</Link>
                 {
                     currentuser ?
-                    <div className='option' onClick={()=>auth.signOut()}>SIGN OUT</div>
-                    :
-                    <Link className="option" to="/signin">SIGN IN</Link>
+                        <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div>
+                        :
+                        <Link className="option" to="/signin">SIGN IN</Link>
                 }
             </div>
         </div>
     )
 }
+
+const mapStateToProps = (state) => {
+    return { currentuser: state.user.currentuser }
+
+}
+
+export default connect(mapStateToProps)(Header);
