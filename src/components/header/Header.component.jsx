@@ -2,13 +2,13 @@ import React from 'react'
 import { AiOutlineCrown as Logo } from 'react-icons/ai'
 import './header.style.css'
 import { auth } from '../../firebase/firebase.utils';
-import store from '../../redux/store';
-// import { Subscription } from 'react-redux';
+import CartIcon from '../cart-icon/CartIcon.component';
 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import CartDropdown from '../cart-dropdown/CartDropdown.component';
 
-function Header({ currentuser }) {
+function Header({ currentuser,hidden }) {
     return (
         <div className='header'>
             <Link to="/" className="logo-container">
@@ -23,13 +23,15 @@ function Header({ currentuser }) {
                         :
                         <Link className="option" to="/signin">SIGN IN</Link>
                 }
+                <CartIcon/>
             </div>
+            {hidden?null:<CartDropdown/>}
         </div>
     )
 }
 
-const mapStateToProps = (state) => {
-    return { currentuser: state.user.currentuser }
+const mapStateToProps = ({user:{currentuser}, cart:{hidden} }) => {
+    return { currentuser,hidden }
 
 }
 
