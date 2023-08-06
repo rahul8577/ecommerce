@@ -5,4 +5,4 @@ const toggleCartHidden = () => ({
 })
 
 
-export default toggleCartHidden
+export default toggleCartHidden  
