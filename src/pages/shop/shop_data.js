@@ -37,25 +37,25 @@ const SHOP_DATA = [{
     "routename": "pant-collection",
     "items": [
         {
-            "id": 101,
+            "id": 104,
             "name": "T-Shirt",
             "imageurl": link,
             "price": 19.99
         },
         {
-            "id": 102,
+            "id": 105,
             "name": "Jeans",
             "imageurl": link,
             "price": 39.99
         },
         {
-            "id": 103,
+            "id": 106,
             "name": "Dress",
             "imageurl": link,
             "price": 49.99
         },
         {
-            "id": 104,
+            "id": 107,
             "name": "Sweater",
             "imageurl": link,
             "price": 29.99
